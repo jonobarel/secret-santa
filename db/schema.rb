@@ -10,13 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210061810) do
+ActiveRecord::Schema.define(version: 20171210183627) do
+
+  create_table "give_aways", force: :cascade do |t|
+    t.string "name"
+    t.integer "owner_id"
+    t.date "start"
+    t.date "end"
+    t.integer "min_members"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_give_aways_on_owner_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "users_giveaways", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "give_away_id"
+    t.index ["give_away_id"], name: "index_users_giveaways_on_give_away_id"
+    t.index ["user_id"], name: "index_users_giveaways_on_user_id"
   end
 
 end
