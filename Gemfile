@@ -27,6 +27,7 @@ gem 'coffee-script-source', '1.8.0'
 
 gem 'sendgrid-ruby'
 
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -38,8 +39,9 @@ gem 'jbuilder', '~> 2.5'
  #On Windows, this didn't work initially. Had to uninstall bcrypt and bcrypt-ruby and then re-install bcrypt to ensure building native extension from scratch.
  #gem 'bcrypt-ruby'
 
- #gem 'bcrypt', '~> 3.1.7' 
-gem 'bcrypt', platforms: [:ruby]
+ gem 'bcrypt', platforms: [:mri, :mingw, :x64_mingw]
+ #gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
