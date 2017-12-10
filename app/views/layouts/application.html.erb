@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SecretSanta</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,10 +9,12 @@
   </head>
 
   <body>
-  	<%= render 'layouts/header' %>
+  	    <header class="navbar navbar-fixed-top navbar-inverse">
+
+  	
     <div class="container">
 	    <%= yield %>
-	    <%= render 'layouts/footer' %>
+	
 	    <%= debug(params) if Rails.env.development? %>
 	</div>
   </body>

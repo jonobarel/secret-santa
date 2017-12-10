@@ -8,6 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
+gem 'bootstrap-sass', '3.3.7'
+
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use Puma as the app server
@@ -39,7 +41,7 @@ gem 'jbuilder', '~> 2.5'
  #On Windows, this didn't work initially. Had to uninstall bcrypt and bcrypt-ruby and then re-install bcrypt to ensure building native extension from scratch.
  #gem 'bcrypt-ruby'
 
- gem 'bcrypt', platforms: [:mri, :mingw, :x64_mingw]
+ gem 'bcrypt', '3.1.9', platforms: [:mri, :mingw, :x64_mingw]
  #gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 

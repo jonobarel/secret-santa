@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+  get 'static_pages/help'
+  get  'static_pages/about'
+
+
   get 'give_aways/new'
-
   get 'give_aways/open'
-
   get 'give_aways/close'
-
   get 'give_aways/gift'
 
   resources :users
