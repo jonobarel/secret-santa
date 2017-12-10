@@ -25,6 +25,7 @@ gem 'coffee-rails', '~> 4.2'
 # added for Windows development compatibility
 gem 'coffee-script-source', '1.8.0'
 
+gem 'sendgrid-ruby'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
