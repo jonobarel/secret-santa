@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get  '/contact', to: 'static_pages#contact'
   get  '/signup',  to: 'users#new'
 
-
   get 'give_aways/new'
   get 'give_aways/open'
   get 'give_aways/close'
