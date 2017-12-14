@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    #@users = User.all
   end
 
   # GET /users/1
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        log_in @user
         flash[:success] = "Welcome Secret Digital Santa!"
 
         format.html { redirect_to @user}#, notice: 'Welcome to Secret Digital Santa!' }
