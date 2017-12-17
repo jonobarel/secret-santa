@@ -13,14 +13,16 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  get 'give_aways/new'
-  get 'give_aways/open'
-  get 'give_aways/close'
-  get 'give_aways/gift'
-
+  #get 'give_aways/new'
+  #get 'give_aways/open'
+  #get 'give_aways/close'
 
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :give_aways
+
+  post '/give_aways/new', to: 'give_aways#create'
 
   #root 'welcome#index'
 
