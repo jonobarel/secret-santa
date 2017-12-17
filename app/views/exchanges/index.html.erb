@@ -14,13 +14,13 @@
   </thead>
 
   <tbody>
-    <% @give_aways.each do |ga| %>
+    <% @exchanges.each do |ga| %>
       <tr>
         <td><%= ga.name %></td>
         <td><%= ga.start %></td>
         <td><%= ga.end %></td>
         <td><%= link_to 'Show', ga %></td>
-        <td><%= link_to 'Edit', edit_give_away_path(ga) %></td>
+        <td><%= link_to 'Edit', edit_exchange_path(ga) %></td>
         <td><%= link_to 'Destroy', ga, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%= link_to 'Create a Give Away', new_give_away_path %>
+<%= link_to 'Create a Give Away', new_exchange_path %>

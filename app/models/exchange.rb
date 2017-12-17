@@ -1,4 +1,4 @@
-class GiveAway < ApplicationRecord
+class Exchange < ApplicationRecord
 	validates :owner_id, presence: true
 	belongs_to :user, foreign_key: 'owner_id'
 
