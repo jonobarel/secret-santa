@@ -5,7 +5,8 @@ class ExchangesController < ApplicationController
 
   def show
     @user = current_user
-    @exchange = Exchange.find_by(params[:id])
+    @exchange = Exchange.find(params[:id])
+    debugger
   end
 
   def index
