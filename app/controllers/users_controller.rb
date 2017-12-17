@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    
+    @give_aways = @user.give_aways
   end
 
   # GET /users/new

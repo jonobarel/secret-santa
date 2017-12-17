@@ -9,14 +9,47 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
     </section>
   </aside>
 </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<div class="row">
+  <section class="user_info">
+    <h2>My GiveAways</h2>
+  </section>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start date</th>
+      <th>End Date</th>
+      <th>Participants</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @give_aways.each do |ga| %>
+      <tr>
+        <td><%= ga.name %></td>
+        <td><%= ga.start %></td>
+        <td><%= ga.end %></td>
+        <td><%= link_to 'Show', ga %></td>
+        <td><%= link_to 'Edit', edit_give_away_path(ga) %></td>
+        <td><%= link_to 'Destroy', ga, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Create a Give Away', new_give_away_path %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
