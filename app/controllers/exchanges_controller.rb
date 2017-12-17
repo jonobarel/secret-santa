@@ -14,12 +14,14 @@ class ExchangesController < ApplicationController
   end
 
   def new
+    @exchange = Exchange.new
   end
 
   def create
-    @user = current_user
+    
     @exchange = Exchange.new(exchange_params)
-    @exchange.owner = @user
+    @exchange.owner = current_user
+    
 
     respond_to do |format|
       if @exchange.save
@@ -40,7 +42,7 @@ class ExchangesController < ApplicationController
   def update
     respond_to do |format|
       if @exchange.update(exchange_params)
-        format.html { redirect_to @exchange}#, notice: 'User was successfully updated.' }
+        format.html { redirect_to @exchange}#, notice: 'Exchange was successfully updated.' }
         format.json { render :show, status: :ok, location: @exchange }
       else
         format.html { render :edit }

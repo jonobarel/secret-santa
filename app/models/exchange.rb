@@ -1,6 +1,6 @@
 class Exchange < ApplicationRecord
 	validates :owner_id, presence: true
-	belongs_to :user, foreign_key: 'owner_id'
+	belongs_to :owner, class_name: "user"
 
 	has_many :participations
 	

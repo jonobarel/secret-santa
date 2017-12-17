@@ -2,7 +2,7 @@ class CreateGiveAways < ActiveRecord::Migration[5.1]
   def change
     create_table :give_aways do |t|
       t.string :name
-      t.integer :owner_id, index: true
+      t.integer :owner, index: true
       t.date :start
       t.date :end
       t.integer :min_members

@@ -1,9 +1,9 @@
-<% provide(:title, "New Giveaway") %>
-<h1>Create a New Secret Santa Giveaway</h1>
+<% provide(:title, "New Exchange") %>
+<h1>Create a New Secret Santa Exchange</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@giveaway, url: new_give_away_path) do |f| %>
+    <%= form_for(@exchange, url: new_exchange_path) do |f| %>
 
       <%= render 'shared/error_messages' %>
 
@@ -16,7 +16,7 @@
       <%= f.label :end, "Close date (optional)" %>
       <%= f.date_field :end, class: 'form-control' %>
 
-      <%= f.submit "Create my Giveaway", class: "btn btn-primary" %>
+      <%= f.submit "Create my Exchange", class: "btn btn-primary" %>
 
     <% end %>
   </div>
