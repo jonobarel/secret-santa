@@ -9,15 +9,11 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-      <p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
     </section>
   </aside>
 </div>
 
+<<<<<<< HEAD
 <div class="row">
   <section class="user_info">
     <h2>My Exchanges</h2>
@@ -50,6 +46,12 @@
 </table>
 
 <%= link_to 'Create a Exchange', new_exchange_path %>
+=======
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+>>>>>>> parent of 7eb36ba... give away functionality
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
