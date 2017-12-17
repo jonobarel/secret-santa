@@ -35,18 +35,17 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @exchanges.each do |ga| %>
-      <tr>
-        <td><%= ga.name %></td>
-        <td><%= ga.start %></td>
-        <td><%= ga.end %></td>
-        <td><%= link_to 'Show', ga %></td>
-        <td><%= link_to 'Edit', edit_exchange_path(ga) %></td>
-        <td><%= link_to 'Destroy', ga, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <div class="album text-muted">
+    <div class="container">
+      <div class="row">
+        <% @exchanges.each do |ex| %>
+          <div class="card">
+            <%= link_to (image_tag "thumbnail.png", alt: ex.name), controller: :exchanges, action: "show", id: ex %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </table>
 
 <%= link_to 'Create a Exchange', new_exchange_path %>
