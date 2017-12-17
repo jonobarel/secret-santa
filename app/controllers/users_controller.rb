@@ -12,7 +12,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 <<<<<<< HEAD
+<<<<<<< HEAD
     @exchanges = @user.exchanges
+=======
+    
+>>>>>>> parent of 7eb36ba... give away functionality
 =======
     
 >>>>>>> parent of 7eb36ba... give away functionality
