@@ -6,7 +6,6 @@ class ExchangesController < ApplicationController
   def show
     @user = current_user
     @exchange = Exchange.find(params[:id])
-    debugger
   end
 
   def index

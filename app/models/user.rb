@@ -4,6 +4,10 @@ class User < ApplicationRecord
 
 	has_many :exchanges, foreign_key: 'owner_id'
 	has_many :participations
+	has_many :participating_exchanges, class_name: 'Exchange', through: :participations
+	has_many :giftees, through: :participations
+
+
 
 	validates :name, presence: true, length: {maximum: 80}
 	validates :email, presence: true, length: {maximum: 250},
