@@ -5,6 +5,10 @@ class User < ApplicationRecord
 
 	has_many :exchanges, foreign_key: 'owner_id'
 	has_many :participations
+	has_many :participating_exchanges, class_name: 'Exchange', through: :participations, source: :exchange
+	has_many :giftees, through: :participations
+
+
 
 =======
 	has_and_belongs_to_many :give_aways
@@ -16,4 +20,17 @@ class User < ApplicationRecord
 	
 	has_secure_password
 	validates :password, presence: true, length: {minimum: 6}
+
+	def participating? (ex)
+		self.participating_exchanges.include?(ex)
+	end
+
+	def join (ex)
+		unless participating? (ex)
+			part = Participation.new(exchange: ex, user: self)
+			part.save
+		else self.errors.add("already participating in exchange_id: #{ex.id}")
+		end
+	end
+
 end
