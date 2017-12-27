@@ -2,10 +2,10 @@
 
 one:
   user_id: 1
-  game_id: 1
+  exchange_id: 1
   secret_name: MyString
 
 two:
   user_id: 1
-  game_id: 1
+  exchange_id: 1
   secret_name: MyString

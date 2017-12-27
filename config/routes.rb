@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  #get 'exchanges/new'
-  #get 'exchanges/open'
-  #get 'exchanges/close'
+  get 'exchanges/open', to: 'exchanges#open'
+  get 'exchanges/close', to: 'exchanges#close'
+  get 'exchanges/participating/:id', to: 'exchanges#participating'
 
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

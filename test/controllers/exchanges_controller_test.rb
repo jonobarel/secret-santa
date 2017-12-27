@@ -1,6 +1,7 @@
 require 'test_helper'
-
+  
 class ExchangesControllerTest < ActionDispatch::IntegrationTest
+  <<-EOS
   test "should get new" do
     get exchanges_new_url
     assert_response :success
@@ -20,5 +21,5 @@ class ExchangesControllerTest < ActionDispatch::IntegrationTest
     get exchanges_gift_url
     assert_response :success
   end
-
+EOS
 end

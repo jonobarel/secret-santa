@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  email: MyString
 
-two:
-  name: MyString
-  email: MyString
+<% ["alice", "bob", "david", "emma", "frank"].each do |person| %>
+user_<%= person %>:
+  name: <%= person %>
+  email: <%= "secret+#{person}@jbarel.com" %>
+  password_digest: <%= User.digest('password') %>
+
+
+<% end %>

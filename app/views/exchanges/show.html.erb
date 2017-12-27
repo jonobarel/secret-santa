@@ -12,6 +12,7 @@
   </aside>
 </div>
 
+
 <div id="join_button">
   <% if current_user.participating?(@exchange) %>
     <%= render 'unjoin' %>
@@ -19,7 +20,6 @@
     <%= render 'join' %>
   <% end %>
   </div>
-<% end %>
 
 <%= link_to 'Edit', edit_exchange_path(@exchange) %> |
 <%= link_to 'Back', exchanges_path %>

@@ -23,10 +23,16 @@ class User < ApplicationRecord
 
 	def join (ex)
 		unless participating? (ex)
-			part = Participation.new(exchange: ex, user: self)
+			part = self.participations.build(ex)
 			part.save
-		else self.errors.add("already participating in exchange_id: #{ex.id}")
+		else self.errors.add(:participating_exchanges, "already includes exchange #{ex.id}: #{ex.name}")
 		end
 	end
+
+	def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 
 end

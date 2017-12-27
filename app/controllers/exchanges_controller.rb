@@ -51,6 +51,19 @@ class ExchangesController < ApplicationController
     end
   end
 
+  def participating
+    @exchange = Exchange.find(params[:id])
+    @owner = @exchange.owner
+    @title = "#{@exchange.name} - participants"
+    #@participants = @exchange.participations.paginate(page: params[:page])
+    @users = @exchange.users.paginate(page: params[:page])
+    render 'show_participants'
+  end
+
+  def join
+    
+  end
+
   def open
   end
 
