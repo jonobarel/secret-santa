@@ -8,3 +8,15 @@
 
 User.create([{name: "Alice", email: "secret+alice@jbarel.com", password: "123456", password_confirmation: "123456"},
 	{name: "Bob", email: "secret+bob@jbarel.com", password: "123456", password_confirmation: "123456"}])
+
+100.times do |n|
+	name = Faker::Name.name
+	email = "secret+#{n+1}@jbarel.com"
+	password = "123456"
+	User.create! ({
+			name: 					name,
+			email: 					email,
+			password: 				password,
+			password_confirmation: 	password
+		})
+end

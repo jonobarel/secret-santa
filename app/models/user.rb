@@ -21,9 +21,9 @@ class User < ApplicationRecord
 		self.participating_exchanges.include?(ex)
 	end
 
-	def join (ex)
+	def join (ex, secret_name = nil)
 		unless participating? (ex)
-			part = self.participations.build(ex)
+			part = self.participations.build(exchange: ex, secret_name: secret_name)
 			part.save
 		else self.errors.add(:participating_exchanges, "already includes exchange #{ex.id}: #{ex.name}")
 		end
