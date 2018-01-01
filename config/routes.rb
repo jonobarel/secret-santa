@@ -15,12 +15,19 @@ Rails.application.routes.draw do
 
   get 'exchanges/open', to: 'exchanges#open'
   get 'exchanges/close', to: 'exchanges#close'
-  get 'exchanges/participating/:id', to: 'exchanges#participating'
+  #get 'exchanges/participating/:id', to: 'exchanges#participating'
 
   resources :users
+  resources :participations
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :exchanges
+  resources :exchanges do
+    member do
+      get :participating
+    end
+  end
+
 
   post '/exchanges/new', to: 'exchanges#create'
 

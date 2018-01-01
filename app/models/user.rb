@@ -29,6 +29,19 @@ class User < ApplicationRecord
 		end
 	end
 
+	def leave(ex)
+		if participating?(ex)
+			part = self.participations.find_by(exchange: ex)
+			unless part.nil?
+				#TODO - add support for dropping out after deadline but before assigning gifts
+				part.destroy
+			else
+				#TODO turn this into an error log
+				self.errors.add(:ex, "could not leave Exchange id: #{ex.id} - #{ex.name}, user not a participant")
+			end
+		end
+	end
+
 	def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
