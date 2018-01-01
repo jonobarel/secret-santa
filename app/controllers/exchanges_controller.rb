@@ -6,6 +6,8 @@ class ExchangesController < ApplicationController
   def show
     @user = current_user
     @exchange = Exchange.find(params[:id])
+    @owner = @exchange.owner
+    @users = @exchange.users.paginate(page: params[:page])
   end
 
   def index
