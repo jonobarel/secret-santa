@@ -27,3 +27,5 @@ config/secrets.yml
 
 *.sublime-project
 *.sublime-workspace
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
