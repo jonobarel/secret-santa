@@ -7,7 +7,7 @@ class ExchangesController < ApplicationController
     @user = current_user
     @exchange = Exchange.find(params[:id])
     @owner = @exchange.owner
-    @users = @exchange.users.paginate(page: params[:page])
+    @users = @exchange.users.paginate(page: params[:page], :per_page => 10)
   end
 
   def index
@@ -58,7 +58,7 @@ class ExchangesController < ApplicationController
     @owner = @exchange.owner
     @title = "#{@exchange.name} - participants"
     #@participants = @exchange.participations.paginate(page: params[:page])
-    @users = @exchange.users.paginate(page: params[:page])
+    @users = @exchange.users.paginate(page: params[:page], :per_page => 10)
     render 'show_participants'
   end
 

@@ -6,22 +6,12 @@
       <span><%= link_to "view my profile", @owner %></span>
       <span><b>Participants:</b> <%= @users.count %></span>
     </section>
-    <section class="stats">
-      <% if @users.any? %>
-        <div class="user_avatars">
-          <% @users.each do |user| %>
-            
-            <%= gravatar_for (user) %>
-
-          <% end %>
-        </div>
-      <% end %>
-    </section>
   </aside>
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @users.any? %>
-      <ul class="users follow">
+      <%= will_paginate @users %>
+      <ul class="users participating">
         <%= render @users %>
       </ul>
       <%= will_paginate @users %>
