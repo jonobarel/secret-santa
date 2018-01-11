@@ -1,6 +1,7 @@
 class ExchangesController < ApplicationController
   before_action :logged_in_user, except: [:view]
   before_action :set_exchange, only: [:show, :edit, :update, :destroy]
+  before_action :owner?, only: [:edit, :update, :destroy]
 
 
   def show
@@ -62,10 +63,6 @@ class ExchangesController < ApplicationController
     render 'show_participants'
   end
 
-  def join
-    
-  end
-
   def open
   end
 
@@ -78,6 +75,10 @@ class ExchangesController < ApplicationController
   def join
   end
 
+  def assign
+
+  end
+
   private
   # Never trust parameters from the scary internet, only allow the white list through.
     def exchange_params
@@ -86,5 +87,12 @@ class ExchangesController < ApplicationController
 
     def set_exchange
       @exchange = Exchange.find_by(id: params[:id], owner: current_user)
+    end
+
+    def owner?
+      unless (@exchange && @exchange.owner.id == current_user.id)
+        flash[:danger] = "Error processing your request"
+        redirect_to exchanges_path
+      end
     end
 end
