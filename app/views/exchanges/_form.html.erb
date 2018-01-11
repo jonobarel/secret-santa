@@ -1,10 +1,10 @@
-<%= form_with(model: give_away, local: true) do |form| %>
-  <% if give_away.errors.any? %>
+<%= form_with(model: exchange, local: true) do |form| %>
+  <% if exchange.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(give_away.errors.count, "error") %> prohibited this give-away from being saved:</h2>
+      <h2><%= pluralize(exchange.errors.count, "error") %> prohibited this exchange from being saved:</h2>
 
       <ul>
-      <% give_away.errors.full_messages.each do |message| %>
+      <% exchange.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :give_away_name %>
+    <%= form.text_field :name, id: :exchange_name %>
   </div>
 
 <div class="field">
     <%= form.label :start, "Start date (optional)" %>
-    <%= form.date_field :start, id: :give_away_start %>
+    <%= form.date_field :start, id: :exchange_start %>
 </div>
 
 <div class="field">
     <%= form.label :end, "End date (optional)" %>
-    <%= form.date_field :end, id: :give_away_end %>
+    <%= form.date_field :end, id: :exchange_end %>
 </div>
 
   <div class="actions">
