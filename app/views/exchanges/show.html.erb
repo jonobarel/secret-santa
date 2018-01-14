@@ -12,6 +12,13 @@
   </aside>
 </div>
 
+<% if @owner == current_user %>
+<div>
+	<%= form_tag(controller: :exchanges, action: :assign, method: "post", id: @exchange.id) do %>
+	  <%= submit_tag "Assign", class: "btn btn-primary" %>
+	<% end %>
+<div>
+<% end %>
 
 <%= render 'show_form' %>
 

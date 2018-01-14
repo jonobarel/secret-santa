@@ -1,7 +1,7 @@
 class ExchangesController < ApplicationController
   before_action :logged_in_user, except: [:view]
-  before_action :set_exchange, only: [:show, :edit, :update, :destroy]
-  before_action :owner?, only: [:edit, :update, :destroy]
+  before_action :set_exchange, only: [:show, :edit, :update, :destroy, :assign]
+  before_action :owner?, only: [:edit, :update, :destroy, :assign]
 
 
   def show
@@ -76,7 +76,11 @@ class ExchangesController < ApplicationController
   end
 
   def assign
-
+    @exchange = Exchange.find(params[:id])
+    @exchange.lock_and_assign
+    @exchange.save
+    flash[:success] = "Giftees assigned!"
+    redirect_to @exchange
   end
 
   private
@@ -90,6 +94,7 @@ class ExchangesController < ApplicationController
     end
 
     def owner?
+      debugger
       unless (@exchange && @exchange.owner.id == current_user.id)
         flash[:danger] = "Error processing your request"
         redirect_to exchanges_path

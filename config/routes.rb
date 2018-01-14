@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :exchanges do
     member do
       get :participating
+      post :assign
     end
   end
 
