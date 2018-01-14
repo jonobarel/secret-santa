@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103155709) do
+ActiveRecord::Schema.define(version: 20180111153713) do
 
   create_table "exchanges", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180103155709) do
     t.integer "min_members"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "locked"
     t.index ["owner_id"], name: "index_exchanges_on_owner_id"
   end
 
