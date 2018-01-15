@@ -77,9 +77,15 @@ class ExchangesController < ApplicationController
 
   def assign
     @exchange = Exchange.find(params[:id])
-    @exchange.lock_and_assign
-    @exchange.save
-    flash[:success] = "Giftees assigned!"
+    #@exchange.locked = true
+    if (@exchange.assign)
+      @exchange.save
+      flash[:success] = "Giftees assigned!"
+    else
+      #TODO: figure out how to raise the appropriate errors for each type of failure (not enough people, close date not reached)
+      flash[:danger] = "Could not assign giftees: need at least 3 participants"
+    end
+    
     redirect_to @exchange
   end
 

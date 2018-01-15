@@ -14,13 +14,25 @@
 
 <% if @owner == current_user %>
 <div>
-	<%= form_tag(controller: :exchanges, action: :assign, method: "post", id: @exchange.id) do %>
-	  <%= submit_tag "Assign", class: "btn btn-primary" %>
+	<% unless @exchange.locked? %>
+
+		<%= form_tag(controller: :exchanges, action: :assign, method: "post", id: @exchange.id) do %>
+	  		<%= submit_tag "Assign", class: "btn btn-primary" %>
+	  	<% end %>
+	<% else %>
+	
+			<%= form_tag do %>
+			<%= submit_tag "Assigned!", class: "btn btn-primary", disabled: true %>
+			<% end %>
 	<% end %>
 <div>
 <% end %>
 
-<%= render 'show_form' %>
+<% unless @exchange.locked? %>
+	<%= render 'show_form' %>
+<% else %>
+	<div>This exchange is locked, can't join or leave</div>
+<% end %>
 
 <%= render 'show_participants' %>
 
