@@ -14,14 +14,15 @@
 
 <% if @owner == current_user %>
 <div>
-	<% unless @exchange.locked? || @exchange.participations.count < 3 #TODO make the minimum participants adjustable %>
+	<% unless @exchange.locked? %>
 
 		<%= form_tag(controller: :exchanges, action: :assign, method: "post", id: @exchange.id) do %>
-	  		<%= submit_tag get_assignment_button_text(@exchange), class: "btn btn-primary" %>
+	  		<%= submit_tag "Assign", class: "btn btn-primary" %>
 	  	<% end %>
 	<% else %>
+	
 			<%= form_tag do %>
-			<%= submit_tag get_assignment_button_text(@exchange), class: "btn btn-primary", disabled: true %>
+			<%= submit_tag "Assigned!", class: "btn btn-primary", disabled: true %>
 			<% end %>
 	<% end %>
 <div>
