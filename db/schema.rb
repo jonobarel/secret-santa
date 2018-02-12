@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121154023) do
+ActiveRecord::Schema.define(version: 20180111153713) do
 
   create_table "exchanges", force: :cascade do |t|
     t.string "name"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20180121154023) do
     t.integer "giftee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "gift"
     t.index ["exchange_id"], name: "index_participations_on_exchange_id"
     t.index ["giftee_id"], name: "index_participations_on_giftee_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
