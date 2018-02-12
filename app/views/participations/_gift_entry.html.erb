@@ -1,1 +1,4 @@
-Find me in participations/_gift_entr.html.erb!
+<%= form_for (locals[:part], url: {controller: :participation, action: :update_gift}}) do |f| %>
+	<%= f.text_field :gift %>
+	<%= f.submit 'Save' %>
+<% end %>

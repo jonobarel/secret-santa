@@ -12,6 +12,7 @@
       <tr>
         <td><%= link_to p.exchange.name, p.exchange %></td>
         <td><%= p.get_giftee_secret_name.nil? ? "No Giftee assigned yet" : p.get_giftee_secret_name %></td>
+        <td><%= debug(p.id) if Rails.env.development? #render 'participations/gift_entry', locals: {part: p} %></td>
       </tr>
     <% end %>
   </tbody>

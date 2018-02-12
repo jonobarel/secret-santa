@@ -8,6 +8,14 @@ class ParticipationsController < ApplicationController
 
 	end
 
+	def update_gift
+		@part = Participation.find(params[:participation][:id])
+		@part.update(params[:participation][gift])
+		@part.save
+		redirect_to current_user
+	end
+
+
 	def destroy
 		#TODO Check against enrollment cutoff date, so that user's giftee doesn't get left stranded.
 		#TODO if the gift has already been assigned, then don't lose it!
