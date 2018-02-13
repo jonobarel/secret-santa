@@ -29,7 +29,7 @@
       <div class="row">
         <% @exchanges.each do |ex| %>
           <div class="card">
-            <%= link_to (image_tag "thumbnail.png", alt: ex.name), controller: :exchanges, action: "show", id: ex %>
+            <%= link_to (image_tag "thumbnail.png", alt: ex.name, controller: :exchanges, action: "show", id: ex) %>
           </div>
         <% end %>
       </div>
