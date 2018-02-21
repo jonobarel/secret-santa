@@ -1,1 +1,7 @@
-Find me in participations/_gift_entr.html.erb!
+<%= form_with(model: participation) do |f| %>
+ <div class="input-group">
+ 	<div class="input-group-addon"><span> <%= "Gift for #{participation.get_giftee_secret_name}" %></span></div>
+		<%= f.text_field :gift, id: participation.gift, class: 'form-control' %>
+  <span class="input-group-btn"><%= f.submit "Save", class: "btn btn-default" %></span>
+   </div>
+<% end %>

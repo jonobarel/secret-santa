@@ -15,4 +15,21 @@ class ParticipationsController < ApplicationController
 		current_user.leave(ex)
 		redirect_to ex
 	end
+
+	def update
+		debugger
+	end
+
+  #  def update
+  #   respond_to do |format|
+  #     if @exchange.update(exchange_params)
+  #       format.html { redirect_to @exchange}#, notice: 'Exchange was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @exchange }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @exchange.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
 end
