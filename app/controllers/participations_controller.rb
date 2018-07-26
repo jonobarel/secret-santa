@@ -17,7 +17,17 @@ class ParticipationsController < ApplicationController
 	end
 
 	def update
-		debugger
+		participation = Participation.find(params[:id])
+		if participation.nil?
+			flash[:warning] = "Sorry, an unknown error occurred, information not updated"
+		else
+
+			if (participation.update(gift: params[:participation][:gift]))
+				flash[:success] = "Hooray! Gift saved!"
+			end
+		end
+
+		redirect_to current_user
 	end
 
   #  def update
