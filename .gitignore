@@ -31,3 +31,4 @@ config/secrets.yml
 config/secrets.yml.key
 *.sublime-workspace
 *.sublime-workspace
+*.sublime-workspace
