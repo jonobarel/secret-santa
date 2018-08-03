@@ -14,27 +14,35 @@
 
 <% if @owner == current_user %>
 <div>
-	<% unless @exchange.locked? %>
+	<% if @exchange.locked? %>
+			<%= form_tag do %>
+			<%= submit_tag "Assigned!", class: "btn btn-primary", disabled: true %>
+			<% end %>
+	
+	<% else %>
 
 		<%= form_tag(controller: :exchanges, action: :assign, method: "post", id: @exchange.id) do %>
 	  		<%= submit_tag "Assign", class: "btn btn-primary" %>
 	  	<% end %>
-	<% else %>
-	
-			<%= form_tag do %>
-			<%= submit_tag "Assigned!", class: "btn btn-primary", disabled: true %>
-			<% end %>
+			
 	<% end %>
 <div>
 <% end %>
 
-<% unless @exchange.locked? %>
-	<%= render 'show_form' %>
-<% else %>
+<% if @exchange.closed? %>
+	<div>This exchange has finished! Check your profile page for your gift</div>
+<% elsif @exchange.locked? %>
 	<div>This exchange is locked, can't join or leave</div>
+<% else %>
+	<%= render 'show_form' %>
 <% end %>
 
-<%= render 'show_participants' %>
+<% if @owner == current_user %>
+	<%= render 'show_participants' %>
+<% else %>
+<% #TODO - show participants for non-owner %>
+	<div>Number of participaints</div>
+<% end %>
 
 <%= link_to 'Edit', edit_exchange_path(@exchange) %> |
-<%= link_to 'Back', exchanges_path %>
+<%= link_to 'Back', current_user %>

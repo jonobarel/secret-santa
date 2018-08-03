@@ -6,6 +6,9 @@ class Exchange < ApplicationRecord
 	has_many :users, through: :participations
 	has_many :giftees, through: :participations, class_name: "User"
 
+	#Assign - locks the Exchange from additional participants joining, and assigns the participating members to one another
+
+
 	def assign
 		unless participations.count < 3 
 			self.locked = true
@@ -25,7 +28,19 @@ class Exchange < ApplicationRecord
 		self.locked
 	end
 
+	#Locked - means no one can join the Exchange, and gifters have been assigned.
 	def locked?
 		locked
+	end
+
+	#close - sets the exchange status to "closed", meaning that no additional changes are possible. At this point, the gifts become visible to the receivers to be redeemed.
+	def close
+		self.closed = true
+		self.close_date = Date.today
+		self.save
+	end
+
+	def closed?
+		return self.closed == true
 	end
 end

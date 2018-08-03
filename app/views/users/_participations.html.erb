@@ -4,6 +4,7 @@
     <tr>
       <th>Exchange</th>
       <th>Giftee</th>
+      <th>Your gift</th>
     </tr>
   </thead>
 
@@ -16,7 +17,12 @@
             <% else %>
             <%= render 'participations/gift_entry', participation: p %>
             <% end %>
-            </td>
+        </td>
+        <td>
+          <% if p.exchange.closed? %>
+          your gift goes here
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

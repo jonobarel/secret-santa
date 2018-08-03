@@ -66,7 +66,14 @@ class ExchangesController < ApplicationController
   def open
   end
 
+  #when an exchange is finished, it's important to close it - this means that no additional participations can occur. After this, the gifts will be distributed to the recievers.
+
   def close
+    @exchange = Exchange.find(params[:id]) #TODO - move this repeating bit of code to a before filter
+    #TODO - ensure that all gifts have been given.
+    #TODO - deal with what happens if gifts are missing. Excise the users? Re-assign? That wouldn't work for 
+    @exchange.close
+    redirect_to @exchange
   end
 
   def gift

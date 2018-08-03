@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121154023) do
+ActiveRecord::Schema.define(version: 20180729140610) do
 
   create_table "exchanges", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20180121154023) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "locked"
+    t.boolean "closed"
+    t.date "close_date"
+    t.date "lock_date"
     t.index ["owner_id"], name: "index_exchanges_on_owner_id"
   end
 
