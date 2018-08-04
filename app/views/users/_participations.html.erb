@@ -20,8 +20,17 @@
         </td>
         <td>
           <% if p.exchange.closed? %>
-          your gift goes here
+            <% if p.part_as_giftee.nil? || p.part_as_giftee.gift.nil? %>
+              <% #TODO: refer user to exchange owner %>
+              <div>Sorry, there's a problem accessing your gift!</div>
+            <% else %>
+              <div>Your gift from <%= p.part_as_giftee.secret_name %>: <span class="input-group form-control"><%= p.part_as_giftee.gift %></span></div>
+              <% end %>
+          <% else %>
+          <% #TODO: change this text to something not annoying, maybe leave blank? %>
+          <div> When the exchange ends, your gift will be here!</div>
           <% end %>
+
         </td>
       </tr>
     <% end %>

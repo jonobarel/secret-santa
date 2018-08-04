@@ -96,6 +96,19 @@ class ExchangesController < ApplicationController
     redirect_to @exchange
   end
 
+  def close
+    @exchange = Exchange.find(params[:id])
+    if (@exchange.close)
+      @exchange.save
+      flash[:success] = "Exchange is closed, all gifts distributed!"
+    else
+      #TODO: fix this error message
+      flash[:danger] = "Could not close the exchange; check logs for error"
+    end
+
+    redirect_to @exchange
+  end
+
   private
   # Never trust parameters from the scary internet, only allow the white list through.
     def exchange_params

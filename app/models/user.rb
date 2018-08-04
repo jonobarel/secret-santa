@@ -8,6 +8,8 @@ class User < ApplicationRecord
 	has_many :participations
 	has_many :participating_exchanges, class_name: 'Exchange', through: :participations, source: :exchange
 	has_many :giftees, through: :participations
+	#has_many :gifts, class_name: :participations, foreign_key: 'giftee_id', through: :participations, source: :participation
+	has_many :gifts, class_name: 'Participation', foreign_key: 'giftee_id'
 
 	#VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   	#validates :email, presence: true, length: { maximum: 255 },
@@ -70,5 +72,9 @@ class User < ApplicationRecord
 
 	def forget
 		update_attribute(:remember_digest, nil)
+	end
+
+	def find_gifts
+		gifts =  Participation.find_by(giftee: self, where: {})
 	end
 end

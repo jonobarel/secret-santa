@@ -35,9 +35,12 @@ class Exchange < ApplicationRecord
 
 	#close - sets the exchange status to "closed", meaning that no additional changes are possible. At this point, the gifts become visible to the receivers to be redeemed.
 	def close
-		self.closed = true
-		self.close_date = Date.today
-		self.save
+		if (self.locked?)
+			self.closed = true
+			self.close_date = Date.today
+		end
+		#TODO - before closing, identify and flag users who have failed to input a gift - warn the owner
+		self.closed		
 	end
 
 	def closed?

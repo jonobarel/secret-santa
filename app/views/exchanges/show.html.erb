@@ -14,17 +14,20 @@
 
 <% if @owner == current_user %>
 <div>
-	<% if @exchange.locked? %>
-			<%= form_tag do %>
-			<%= submit_tag "Assigned!", class: "btn btn-primary", disabled: true %>
-			<% end %>
-	
+	<% if @exchange.closed? %>
+		<%= form_tag do %>
+			<%= submit_tag "Closed!", class: "btn btn-primary", disabled: true %>
+		<% end %>
+	<% elsif @exchange.locked? %>
+		<%= form_tag(controller: :exchanges, action: :close, method: "post", id: @exchange.id) do %>
+			<%= submit_tag "Close - distribute gifts", class: "btn btn-primary" %>
+		<% end %>
+
 	<% else %>
 
 		<%= form_tag(controller: :exchanges, action: :assign, method: "post", id: @exchange.id) do %>
 	  		<%= submit_tag "Assign", class: "btn btn-primary" %>
 	  	<% end %>
-			
 	<% end %>
 <div>
 <% end %>

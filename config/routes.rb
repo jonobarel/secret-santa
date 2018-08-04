@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   get 'exchanges/open', to: 'exchanges#open'
-  get 'exchanges/close', to: 'exchanges#close'
+  #get 'exchanges/close', to: 'exchanges#close'
   #get 'exchanges/participating/:id', to: 'exchanges#participating'
 
   resources :users
@@ -26,12 +26,14 @@ Rails.application.routes.draw do
     member do
       get :participating
       post :assign
+      post :close
     end
   end
 
 
   post '/exchanges/new', to: 'exchanges#create'
 
+  get 'users/:id/gifts', to: 'users#gifts'
   #root 'welcome#index'
 
 end
