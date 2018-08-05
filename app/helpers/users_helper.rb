@@ -6,4 +6,13 @@ module UsersHelper
     	gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
 		image_tag(gravatar_url, alt: user.name, class: "gravatar")
 	end
+
+	def get_pronoun_for_user_page(user)
+		if (user == current_user)
+			"My"
+		else
+			"#{user.name}'s"
+		end
+	end
+
 end

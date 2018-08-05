@@ -39,12 +39,18 @@
 <% else %>
 	<%= render 'show_form' %>
 <% end %>
-
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= gravatar_for @owner %>
+      <h1><%= @owner.name %></h1>
+      <span><%= link_to "view my profile", @owner %></span>
+      <span><b>Participants:</b> <%= @users.count %></span>
+    </section>
+  </aside>
+</div>
 <% if @owner == current_user %>
 	<%= render 'show_participants' %>
-<% else %>
-<% #TODO - show participants for non-owner %>
-	<div>Number of participaints</div>
 <% end %>
 
 <%= link_to 'Edit', edit_exchange_path(@exchange) %> |
