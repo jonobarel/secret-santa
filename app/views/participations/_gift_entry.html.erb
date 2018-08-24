@@ -1,7 +1,8 @@
 <%= form_with(model: participation) do |f| %>
  <div class="input-group">
- 	<div class="input-group-addon"><span> <%= "Gift for #{participation.get_giftee_secret_name}" %></span></div>
-		<%= f.text_field :gift, id: participation.gift, class: 'form-control' %>
-  <span class="input-group-btn"><%= f.submit "Save", class: "btn btn-default" %></span>
+ 	<% button_label, disabled_status = get_label_and_status(participation) %>
+ 	<div class="input-group-addon"><span> <%= button_label %></span></div>
+		<%= f.text_field :gift, id: participation.gift, class: 'form-control'  , disabled: disabled_status %>
+  <span class="input-group-btn"><%= f.submit "Save", class: "btn btn-default", disabled: disabled_status %></span>
    </div>
 <% end %>

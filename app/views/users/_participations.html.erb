@@ -12,11 +12,9 @@
     <% @participations.each do |p| %>
       <tr>
         <td><%= link_to p.exchange.name, p.exchange %></td>
-        <td><% if (p.get_giftee_secret_name.nil?) %> 
-            <div class="input-group"><div class="input-group-addon"><span>No Giftee assigned yet</span></div></div>
-            <% else %>
-            <%= render 'participations/gift_entry', participation: p %>
-            <% end %>
+        <td>
+              <%= render 'participations/gift_entry', participation: p %>
+            
         </td>
         <td>
           <% if p.exchange.closed? %>
