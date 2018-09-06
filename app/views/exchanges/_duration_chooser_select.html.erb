@@ -1,0 +1,8 @@
+<% durations = [['weeks',(0..4)],['days',(0..6)],['hours',(0..23)]] %>
+<% durations.each do |i| %>
+            <%= label_tag i[0], class: 'input-group' do %>
+            		<%= select_tag i[0], nil, in: [1], class: 'form-control', id: i[0] %>
+            		<span class="input-group-addon"><%= i[0] %></span>
+            <% end %>
+
+<% end %>

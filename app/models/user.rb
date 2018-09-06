@@ -75,7 +75,7 @@ class User < ApplicationRecord
 	end
 
 	def find_gifts
-		gifts =  Participation.find_by(giftee: self, where: {})
+		gifts =  Participation.where(giftee: self)
 	end
 
 end

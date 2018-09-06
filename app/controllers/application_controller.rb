@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :redirect_to_profile_page, only: [:root]
+
   include SessionsHelper
 
   def redirect_to_profile_page
