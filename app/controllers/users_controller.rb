@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @exchanges = @user.exchanges
     @participations = @user.participations
-    @gifts = @user.find_gifts
+    @gifts = @user.find_gifts.map()
   end
 
   # GET /users/new

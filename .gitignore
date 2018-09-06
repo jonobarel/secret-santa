@@ -32,3 +32,6 @@ config/secrets.yml.key
 *.sublime-workspace
 *.sublime-workspace
 *.sublime-workspace
+
+#Ignore mockups and design files, for now.
+/design/*

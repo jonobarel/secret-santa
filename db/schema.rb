@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180729140610) do
+ActiveRecord::Schema.define(version: 20180806193544) do
 
   create_table "exchanges", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 20180729140610) do
     t.boolean "closed"
     t.date "close_date"
     t.date "lock_date"
+    t.string "status"
+    t.datetime "enrollment_deadline"
+    t.integer "enrollment_duration"
+    t.datetime "completion_deadline"
+    t.integer "completion_duration"
+    t.datetime "cancel_date"
     t.index ["owner_id"], name: "index_exchanges_on_owner_id"
   end
 

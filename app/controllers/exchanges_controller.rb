@@ -1,4 +1,5 @@
 class ExchangesController < ApplicationController
+  include ApplicationHelper
   before_action :logged_in_user, except: [:view]
   before_action :set_exchange, only: [:show, :edit, :update, :destroy, :assign]
   before_action :owner?, only: [:edit, :update, :destroy, :assign]
@@ -21,9 +22,13 @@ class ExchangesController < ApplicationController
   end
 
   def create
-    
     @exchange = Exchange.new(exchange_params)
     @exchange.owner = current_user
+    @exchange.status = :open
+    #@exchange.enrollment_deadline =
+    @exchange.enrollment_duration = hash_to_duration(params[:enrollment])
+    #@exchange.completion_deadline =
+    #@exchange.giftin_duration = 
     
 
     respond_to do |format|

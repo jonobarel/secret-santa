@@ -10,15 +10,17 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :start, "Start date (optional)" %>
-      <%= f.date_field :start, class: 'form-control' %>
+      <%= label_tag :enrollment_deadline, "Enrollment period:" %>
+      <% #TODO: cut this into a loop or something simpler %>
 
-      <%= f.label :end, "Close date (optional)" %>
-      <%= f.date_field :end, class: 'form-control' %>
+      <div class="form-inline">
+          <%= render 'duration_chooser', name: 'enrollment'  %>
+      </div>
+      <% #f.label :end, "Close date (optional)" %>
+      <% #f.date_field :end, class: 'form-control' %>
 
       <%= f.submit "Create my Exchange", class: "btn btn-primary" %>
 
     <% end %>
   </div>
 </div>
-
