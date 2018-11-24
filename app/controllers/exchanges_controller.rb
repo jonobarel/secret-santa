@@ -125,7 +125,7 @@ class ExchangesController < ApplicationController
     end
 
     def owner?
-      debugger
+      #debugger
       unless (@exchange && @exchange.owner.id == current_user.id)
         flash[:danger] = "Error processing your request"
         redirect_to exchanges_path

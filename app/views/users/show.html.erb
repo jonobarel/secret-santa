@@ -35,6 +35,7 @@
 
 <%= link_to 'Create an Exchange', new_exchange_path %>
 
-<% if @user == current_user && @participations.count > 0 #User is participating in Exchanges %>
+<% if @user == current_user && !@participations.nil? && @participations.count > 0 #User is participating in Exchanges %>
+  <% #debugger %>
   <%= render 'participations' %>
 <% end %>

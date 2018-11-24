@@ -11,10 +11,22 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:exchanges).find(params[:id])
     @exchanges = @user.exchanges
-    @participations = @user.participations
-    @gifts = @user.find_gifts.map()
+
+    giving ={}
+    receiving = {}
+    Participation.all.where(user_id: @user).includes(:exchange).collect{|p| giving[p.exchange_id] = p}
+    Participation.all.where(giftee_id: @user).includes(:exchange).collect{|p| receiving[p.exchange_id] = p}
+
+    @participations = []
+
+    #TODO - fix the logic for retrieving the received gift in a smarter way
+    giving.collect{|i,p| @participations << {end_date: p.exchange.end, exchange: p.exchange, participation: p, part_as_giftee: receiving[p.exchange_id]}}
+
+    @participations.sort {|x,y| x[:end_date] <=> y[:end_date]}
+    #debugger
+
   end
 
   # GET /users/new
